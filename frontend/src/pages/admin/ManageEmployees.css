@@ -1,0 +1,479 @@
+.manage-employees {
+  padding: 0;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Header */
+.employees-header {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.employees-header h1 {
+  margin: 0;
+  color: #1a1a2e;
+  font-size: 1.8rem;
+}
+
+.employees-header p {
+  margin: 0.2rem 0 0 0;
+  color: #666;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #00ffff, #ff00ff);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Employee Form */
+.employee-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.employee-form {
+  background: white;
+  border-radius: 12px;
+  padding: 0;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-header h2 {
+  margin: 0;
+  color: #1a1a2e;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #f5f5f5;
+}
+
+.employee-form form {
+  padding: 2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease;
+  background: white;
+  color: #333; /* Added text color */
+}
+
+/* Fix text visibility in inputs */
+.form-group input::placeholder {
+  color: #999; /* Lighter placeholder text */
+}
+
+.form-group input:not(:placeholder-shown),
+.form-group select {
+  color: #000; /* Dark text when user types */
+  background: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #00ffff;
+  box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.1);
+  color: #000; /* Ensure text is visible on focus */
+  background: #fff;
+}
+
+/* Ensure dropdown options are visible */
+.form-group select option {
+  color: #000;
+  background: white;
+  padding: 10px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+/* Employees Content */
+.employees-content {
+  padding: 2rem;
+}
+
+.employees-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.search-box {
+  position: relative;
+  flex: 1;
+  max-width: 300px;
+}
+
+.search-box i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: white;
+  color: #333; /* Added text color */
+}
+
+.search-box input::placeholder {
+  color: #999;
+}
+
+.search-box input:focus {
+  color: #000;
+  background: #fff;
+}
+
+.employees-stats {
+  display: flex;
+  gap: 1.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Employees Table */
+.employees-table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.employees-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.employees-table th {
+  background: #f8f9fa;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.employees-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333; /* Ensure table text is visible */
+}
+
+.employees-table tr:hover {
+  background: #f8f9fa;
+}
+
+/* Table Cells */
+.employee-id {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  color: #00b3b3; /* Slightly darker cyan for better visibility */
+}
+
+.employee-name {
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.employee-email {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.2rem;
+}
+
+.employee-contact {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Badges */
+.role-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.role-manager {
+  background: rgba(255, 193, 7, 0.1);
+  color: #b38f00; /* Darker yellow for better contrast */
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.role-technician {
+  background: rgba(33, 150, 243, 0.1);
+  color: #1976d2; /* Darker blue for better contrast */
+  border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.role-attendant {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2e7d32; /* Darker green for better contrast */
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.role-cashier {
+  background: rgba(156, 39, 176, 0.1);
+  color: #7b1fa2; /* Darker purple for better contrast */
+  border: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+.status-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-active {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2e7d32; /* Darker green for better contrast */
+}
+
+.status-inactive {
+  background: rgba(158, 158, 158, 0.1);
+  color: #616161; /* Darker gray for better contrast */
+}
+
+/* Action Buttons */
+.employee-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.btn-edit {
+  background: rgba(33, 150, 243, 0.1);
+  color: #1976d2; /* Darker blue for better visibility */
+}
+
+.btn-edit:hover {
+  background: #1976d2;
+  color: white;
+}
+
+.btn-delete {
+  background: rgba(244, 67, 54, 0.1);
+  color: #d32f2f; /* Darker red for better visibility */
+}
+
+.btn-delete:hover {
+  background: #d32f2f;
+  color: white;
+}
+
+/* Loading and No Employees Message */
+.loading-message {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.loading-message i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00ffff;
+}
+
+.no-employees {
+  text-align: center;
+  padding: 3rem;
+}
+
+.no-employees-message {
+  color: #666;
+}
+
+.no-employees-message i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #ddd;
+}
+
+.no-employees-message p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Disabled state for buttons */
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-edit:disabled,
+.btn-delete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary:disabled:hover,
+.btn-secondary:disabled:hover,
+.btn-edit:disabled:hover,
+.btn-delete:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .employees-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .employees-content {
+    padding: 1rem;
+  }
+  
+  .employees-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-box {
+    max-width: none;
+  }
+  
+  .employees-stats {
+    justify-content: space-between;
+  }
+  
+  .employee-form-overlay {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .employees-table-container {
+    overflow-x: auto;
+  }
+  
+  .employees-table {
+    min-width: 600px;
+  }
+  
+  .form-grid {
+    gap: 0.8rem;
+  }
+  
+  .employee-form form {
+    padding: 1.5rem;
+  }
+}
